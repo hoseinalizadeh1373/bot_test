@@ -19,15 +19,16 @@ class TestController extends Controller
 
         $proxies =[
             "http"=>"http://181.198.62.154:999",
+            "http"=>"http://178.22.122.100:80",
         ];
         $client = new Client([
             // Base URI is used with relative requests
             RequestOptions::PROXY =>$proxies,
-            // RequestOptions::VERIFY => true, # disable SSL certificate validation
+            RequestOptions::VERIFY => true, # disable SSL certificate validation
             // RequestOptions::TIMEOUT => 30,
         ]);
         try {
-            $body = $client->get("https://api.telegram.org/")->getBody();
+            $body = $client->get("http://api.telegram.org/")->getBody();
             echo $body->getContents();
         } catch (\Exception $e) {
             echo $e->getMessage();
