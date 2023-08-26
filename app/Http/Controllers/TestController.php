@@ -14,25 +14,29 @@ class TestController extends Controller
 
         $base_url = 'https://api.telegram.org/bot'.TOKEN.'/';
 
+
         $getme = $base_url.'getMe';
 
         $proxies =[
-            "http"=>"139.255.45.67",
-
+            "http"=>"http://181.198.62.154:999",
         ];
         $client = new Client([
             // Base URI is used with relative requests
+            RequestOptions::PROXY =>$proxies,
+            RequestOptions::VERIFY => true, # disable SSL certificate validation
+            RequestOptions::TIMEOUT => 30,
         ]);
         try {
-            $client->get("https://www.youtube.com");
+            $body = $client->get("http://api.telegram.org/")->getBody();
+            echo $body->getContents();
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            echo $e->getMessage();
         }
         
 
-        $response = $client->request('GET', '');
+        // $response = $client->request('GET', '');
 
-        dd($response);
+        // dd($response);
 
     }
 }
