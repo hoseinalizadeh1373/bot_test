@@ -27,7 +27,7 @@ class TestController extends Controller
             // RequestOptions::TIMEOUT => 30,
         ]);
         try {
-            $body = $client->get("https://github.com/")->getBody();
+            $body = $client->get("https://api.telegram.org/")->getBody();
             echo $body->getContents();
         } catch (\Exception $e) {
             echo $e->getMessage();
