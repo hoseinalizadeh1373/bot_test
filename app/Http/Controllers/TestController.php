@@ -23,8 +23,8 @@ class TestController extends Controller
         $client = new Client([
             // Base URI is used with relative requests
             RequestOptions::PROXY =>$proxies,
-            RequestOptions::VERIFY => true, # disable SSL certificate validation
-            RequestOptions::TIMEOUT => 30,
+            // RequestOptions::VERIFY => true, # disable SSL certificate validation
+            // RequestOptions::TIMEOUT => 30,
         ]);
         try {
             $body = $client->get("http://api.telegram.org/")->getBody();
